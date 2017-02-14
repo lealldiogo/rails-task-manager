@@ -1,0 +1,16 @@
+<h1>To do List</h1>
+<%= link_to "Add a new task", tasks_new_path, class: "btn btn-primary" %>
+<div class="row">
+  <% @tasks.each do |task| %>
+    <div class="col-xs-4">
+      <% if task.status %>
+        <i class="fa fa-check-square-o fa-4x" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-square-o fa-4x" aria-hidden="true"></i>
+      <% end %>
+      <h2><%= link_to task.name, task_path(task) %></h2>
+      <%= link_to "Edit", edit_task_path(task), class: "btn btn-warning" %>
+      <%= link_to "Delete", task_path(task), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
+  <% end %>
+</div>
